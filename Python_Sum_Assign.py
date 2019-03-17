@@ -71,7 +71,7 @@ def Corrupteddata(data): #generate errors randomly in the dataset
     sens_pos = random.randrange(1, 16, 1)
     data[Sens_clust][sens_pos] = 'err'
     
-"""loop"""
+"""Main loop"""
 count =1
 while (count<=3): #Problem 2 generate diffrent datasets
     data ={}            
