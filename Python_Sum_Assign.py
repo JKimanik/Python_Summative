@@ -12,7 +12,6 @@ git@github.com:JKimanik/Python_Summative.git
 """
 import random 
 import datetime
-import time
 
 """
 Problem 1:
@@ -33,7 +32,7 @@ def Datagenerator():
             Sensor_Reading.append(float('%.3f'%random.random())) #random float on each sensor
             Clustereadings.append(Sensor_Reading)           
             Sensor_Reading = []
-    #print(Clustereadings)
+    print(Clustereadings)
     return Clustereadings
     
   
@@ -50,7 +49,7 @@ data collection
 
 """
 def Writetofile(Completedata): #
-        Storagefile = open("SensorDump.csv","w") #append to file
+        Storagefile = open("SensorDump.csv","a") #append to file
         Storagefile.write("Time stop: {}".format(datetime.datetime.now())) 
         Storagefile.write(str(Completedata)) #Write the data to the file, change to string 
         #print(Completedata)
@@ -65,14 +64,19 @@ Convert the string to a numerical value that can be uniquely identified as the e
 Create an error log that records that the error happened and which of the sensors the error occurred with
 For a challenge you can try to date and time stamp the log entries
 """
-
-
+def Corrupteddata(data): #generate errors randomly in the dataset
+  errors = random.randrange(1)
+  for i in range(errors):
+    Sens_clust = random.randrange(1, 32, 1)
+    sens_pos = random.randrange(1, 16, 1)
+    data[Sens_clust][sens_pos] = 'err'
+    
 """loop"""
 count =1
 while (count<=3): #Problem 2 generate diffrent datasets
-                  
-    datain =[]
+    data ={}            
+    Generatedata =[]
     datain = Datagenerator() #Sensor data gernerator       
-    Writetofile(datain)
-    
+    Writetofile(Generatedata)
+    Corrupteddata(data)
     count=count+1 # count iterations         
