@@ -11,6 +11,8 @@ git@github.com:JKimanik/Python_Summative.git
 
 """
 import random 
+import datetime
+import time
 
 """
 Problem 1:
@@ -31,9 +33,10 @@ def Datagenerator():
             Sensor_Reading.append(float('%.3f'%random.random())) #random float on each sensor
             Clustereadings.append(Sensor_Reading)           
             Sensor_Reading = []
-    print(Clustereadings)
-   
+    #print(Clustereadings)
+    return Clustereadings
     
+  
 """
 Problem 2:
 Once you have your dataset to work with you will need to show that you can 
@@ -46,14 +49,12 @@ For an extra challenge you can try to date and time stamp each interval of
 data collection
 
 """
-def Writetofile(Completedata):
-    
-    tofile = ''.join(map(Completedata,''))
-    Storagefile = open("SensorDump.csv","a+")
-    Storagefile.write(tofile)
-    #return data
-
-
+def Writetofile(Completedata): #
+        Storagefile = open("SensorDump.csv","w") #append to file
+        Storagefile.write("Time stop: {}".format(datetime.datetime.now())) 
+        Storagefile.write(str(Completedata)) #Write the data to the file, change to string 
+        #print(Completedata)
+        #print("Timestamp{}".format(datetime.datetime.now()))
 """
 Problem 3:
 Write a function that will test the incoming data for possible strings entries
@@ -69,9 +70,9 @@ For a challenge you can try to date and time stamp the log entries
 """loop"""
 count =1
 while (count<=3): #Problem 2 generate diffrent datasets
+                  
+    datain =[]
+    datain = Datagenerator() #Sensor data gernerator       
+    Writetofile(datain)
     
-    Alldata = Datagenerator() #Sensor data gernerator
-    
-    Writetofile(Alldata)
-     
     count=count+1 # count iterations         
