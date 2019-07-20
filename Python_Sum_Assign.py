@@ -2,16 +2,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 Created on Sun Mar 17 12:16:23 2019
-
 @author: James Kimani
-
 Python Summative Assignment
-
-git@github.com:JKimanik/Python_Summative.git
-
 """
 import random 
 import datetime
+import csv 
 
 """
 Problem 1:
